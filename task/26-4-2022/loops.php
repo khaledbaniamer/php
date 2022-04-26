@@ -75,15 +75,12 @@
 
     //Task 5 :
     echo '<br>'."***** Task 5 ******".'<br>';
-    $num = 0;
-    $break = 1;
-    for($i=1 ; $i<=15;$i++){
-        $num++;
-        for($j = 0 ; $j<$num ; $j++){
-            echo $i;
-            $i++;
+    $p =1;
+    for ($i=1; $i <=5 ; $i++) { 
+        for ($j=1; $j <=$i ; $j++) {
+            echo $p;
+            $p++;
         }
-        $i--;
         echo '<br>';
     }
 

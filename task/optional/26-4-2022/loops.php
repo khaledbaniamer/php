@@ -1,20 +1,27 @@
 <?php
-$num = 6;
-    for ($i=0; $i <5 ; $i++) { 
-        for ($j=$i; $j <$num ; $j++) { 
-           echo 'A'; 
-        }
-        $num--;
-        echo '<br>';
-    }
+echo '<br>';    
+echo '<br>';    
+echo '********Task 1 ********'; 
+echo '<br>';    
 
+for ($i=1; $i <=5 ; $i++) { 
+    for ($j=$i; $j <=5 ; $j++) { 
+        echo  "&nbsp;&nbsp;";
+    }
+    for ($k=1; $k <= $i ; $k++) { 
+        echo  "&nbsp;&nbsp;";
+        echo 'A';
+    }
+    
+    echo '<br>';
+}
 ?>
 
 <?php
 echo '<br>';    
 echo '<br>';    
 echo '<br>';    
-echo '********Task 3********';   
+echo '********Task 2 ********';   
 ?>
 
  <table border="1" >
@@ -36,7 +43,7 @@ echo '********Task 3********';
 echo '<br>';    
 echo '<br>';    
 echo '<br>';    
-echo '********Task 4 ********';  
+echo '********Task 3 ********';  
 echo '<br>';    
 
 for($i = 1 ; $i<=50;$i++){
@@ -51,27 +58,70 @@ for($i = 1 ; $i<=50;$i++){
     }
 }
 
+
+echo '<br>';    
+echo '<br>';    
+echo '<br>';    
+echo '********Task 4 ********'; 
+echo '<br>';
+for ($i=1; $i <=5 ; $i++) { 
+    for ($j=$i; $j <5 ; $j++) { 
+        echo '1 ';
+    }
+    for ($k=1; $k <=$i ; $k++) { 
+        echo "$i ";
+    
+    }
+    echo '<br>';
+}
 echo '<br>';    
 echo '<br>';    
 echo '<br>';    
 echo '********Task 5 ********'; 
 echo '<br>';
-$alpha = range('A' , 'Z');
+
+$alp = range('A','Z');
+for ($i=1; $i <=5 ; $i++) { 
+    for ($j=$i; $j <5 ; $j++) { 
+        echo 'A ';
+    }
+    for ($k=1; $k <=$i ; $k++) { 
+        
+        echo $alp[$i-1]." ";
+        
+    }
+    echo '<br>';
+}
+echo '<br>';    
+echo '<br>';    
+echo '<br>';    
+echo '********Task 6 ********'; 
+echo '<br>';
+$alp = range('A','Z');
+for ($i=1; $i <=5 ; $i++) { 
+    for ($j=$i; $j <=5 ; $j++) { 
+        echo  "&nbsp;&nbsp;";
+    }
+    for ($k=1; $k <= $i ; $k++) { 
+        echo  "&nbsp;&nbsp;";
+        echo $alp[$k-1];
+    }
     
-for ($i = 0; $i <= 5; $i++) {
-    for ($j = $i; $j < 8; $j++)
-        echo "&nbsp;&nbsp;";
-    for ($j = 2 * $i - 1; $j > 0; $j--)
-        echo "$alpha[$i]";
-    echo "<br>";
+    echo '<br>';
 }
-$n = 8;
-for ($i = 8; $i > 0; $i--) {
-    for ($j = $n - $i; $j > 0; $j--)
-        echo "&nbsp;&nbsp;";
-    for ($j = 2 * $i - 1; $j > 0; $j--)
-        echo ("&nbsp;*");
-    echo "<br>";
+for ($i=1; $i <=5 ; $i++) { 
+    for ($j=1; $j <=$i ; $j++) { 
+        echo  "&nbsp;&nbsp;";
+    }
+    for ($k=$i; $k <= 5; $k++) { 
+        echo  "&nbsp;&nbsp;";
+        echo $alp[$k-1];
+    }
+    
+    echo '<br>';
 }
+
+
+
 
 ?>
