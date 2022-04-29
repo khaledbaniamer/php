@@ -1,0 +1,125 @@
+nav{
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    /* background-color: #3f51b5; */
+    background-color: #3f51b5;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+#logo{
+    grid-area: 1/2/2/4;
+    display: flex;
+    align-items: center;
+}
+#links{
+    grid-area: 1/6/2/10;
+}
+li{
+    list-style:  none;
+}
+#links ul{
+    display: flex;
+    padding: 2%;    
+    margin-top: 1%;
+    justify-content: space-around;
+}
+a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+a:hover{
+    color: white;
+}
+footer{
+    background-color: #3f51b5;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+#copyright{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+h3{
+    margin: 4% 0;
+}
+#form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 5%;
+}
+#product-form{
+    display: flex;
+    flex-direction: column;
+    width : 60%;
+    justify-content: center;
+    height: 500px;
+}
+#product-form div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+input , label{
+    width: 50%;
+    padding: 1% 0;
+    
+}
+input{
+    
+    border-radius: 5px;
+    border: .5px solid gray;
+    box-shadow: 5px 5px 5px 5px rgba(36, 36, 214, 0.267);
+    border:rgba(36, 36, 214, 0.655) none .5px ;
+}
+input:hover{
+    
+    border:rgba(36, 36, 214, 0.655) solid .25px ;
+}
+input:focus{
+    
+    border:none;
+    outline: 0;
+    forced-color-adjust: red;
+    
+}
+
+input[type = submit]{
+    margin-top: 4%;
+    background-color: #3f51b5f3;
+    color: white;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+label{
+    font-size:1.3em ;
+}
+#table{
+    padding: 5%;
+}
+td{
+    vertical-align: middle;
+}
+
+#products{
+    border: #3f51b5 solid 1px;
+    margin: 5%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+}
+#products .card{
+    margin: 5%;
+}
+
+#des{
+    height: 70px;
+    
+}
+
