@@ -1,12 +1,7 @@
 <?php
 
 $link = mysqli_connect("localhost", "root", "", "miniproject");
-// mysqli_query($link ,"
-// INSERT INTO products (product_name , product_description , product_price) VALUES ('product2' , 'this is product two' , '200')
-// ");
-// mysqli_query($link , "
-// DELETE FROM products 
-// ")
+
 $message = "";
 if(isset($_POST['add'])){
     $name = $_POST['productTitle'];
@@ -38,6 +33,7 @@ if(isset($_GET['delete'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,11 +44,54 @@ if(isset($_GET['delete'])){
     <link rel="stylesheet" href="style.css">
 
     <title>E-commenance</title>
+
+    <style>
+      #tablePic{
+        height : 100px;
+      }
+      @media screen and (min-width: 480px) and (max-width: 768px){
+        #product-form{
+          height: 400px;
+    } 
+      input , label{
+    width : 100%;
+    margin : 1% 0;
+    }
+      }
+      @media screen and (max-width: 479px) {
+    #products{
+
+       
+        display: flex;
+        flex-direction: column;
+       
+    }
+
+    #links{
+    grid-area: 1/4/2/10;
+    font-size : 12px;
+  }
+      #product-form{
+          display: flex;
+          flex-direction: column;
+          width : 60%;
+          justify-content: center;
+          height: 300px;
+      }
+      input , label{
+        width : 100%;
+        margin : 1% 0;
+      }
+      td img {
+        height:80px;
+      }
+      }
+    </style>
 </head>
 <body>
     <nav >
         <div id="logo">
-            <img src="" alt="no">
+            <img src="logo.png" height = "60px" alt="no">
         </div>
         <div id="links">
         <ul>
@@ -107,7 +146,7 @@ if(isset($_GET['delete'])){
             
         <?php while($row = mysqli_fetch_assoc($select)){ ?>
          <tr>
-            <td><img src="image/<?php echo $row['image']; ?>" height="100" alt=""></td>
+            <td><img id="tablePic" src="image/<?php echo $row['image']; ?>" alt=""></td>
             <td><?php echo $row['name']; ?></td>
             <td>$<?php echo $row['price']; ?>/-</td>
             <td>

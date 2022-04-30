@@ -23,11 +23,28 @@ $select = mysqli_query($link, "SELECT * FROM products");
     <link rel="stylesheet" href="style.css">
 
     <title>E-commenance</title>
+
+    <style>
+      @media screen and (max-width: 479px) {
+    #products{
+
+       
+        display: flex;
+        flex-direction: column;
+       
+    }
+
+    #links{
+    grid-area: 1/4/2/10;
+    font-size : 12px;
+}
+}
+    </style>
 </head>
 <body>
     <nav >
         <div id="logo">
-            <img src="" alt="no">
+            <img src="logo.png"  height = "60px"alt="no">
         </div>
         <div id="links">
         <ul>
@@ -39,27 +56,21 @@ $select = mysqli_query($link, "SELECT * FROM products");
     </nav>
     
     <!-- products section -->
-
-    <?php while($row = mysqli_fetch_assoc($select)){ ?>
-            <div id="products">
+  <div id="products" >
+    <?php while($row = mysqli_fetch_assoc($select)): ?>
+            
                 
             <div class="card">
-                <img src="stufent.jpg" class="card-img-top" alt="Fissure in Sandstone"/>
+                <img src="image/<?php echo $row['image']; ?>" class="card-img-top" alt="Fissure in Sandstone"/>
                 <div class="card-body">
-                    <h5 class="card-title"><?php echo $row['name']; ?></h5>
-                    <p class="card-text">$<?php echo $row['price']; ?></p>
-                    <p class="card-text"></p>
+                    <h5 ><?php echo $row['name']; ?></h5>
+                    <p >$<?php echo $row['price']; ?></p>
+                    <p ></p>
                     
                     <a href="#!" class="btn btn-primary">Show Product</a>
                 </div>
             </div>
-      <?php } ?>
-
-
-
- 
-      
-
+      <?php endwhile ?>
     </div>
 
   <!-- Footer -->
