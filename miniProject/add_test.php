@@ -1,32 +1,13 @@
 <?php
+    session_start();
+?>
 
-$link = mysqli_connect("localhost", "root", "", "miniproject");
+<?php
+  if(isset($_POST['delete'])){
+    $id = $_POST['delete'];
+    unset($_SESSION['Item']);
+    unset($_SESSION['Price']);
 
-$message = "";
-if(isset($_POST['add'])){
-    $name = $_POST['productTitle'];
-    $price = $_POST['productprice'];
-    $product_image = $_FILES['product_image']['name'];
-    $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
-    $product_image_folder = 'image/'.$product_image;
-
-    if(empty($name) || empty($product_image) || empty($price)){
-        $message = 'please fill all field';
-    }else{
-        $update = "
-        INSERT INTO products (name , price , image) VALUES ('$name' , '$price' ,'$product_image' )";
-        $add = mysqli_query($link , $update);
-        if($add){
-            $message = "Product added successfully";
-        }else{
-            $message = "Product is not added ";
-        }
-    }
-};
-if(isset($_GET['delete'])){
-    $id = $_GET['delete'];
-    mysqli_query($link, "DELETE FROM products WHERE id = $id");
-    header('location:add_product.php');
  };
 ?>
 
@@ -96,22 +77,18 @@ if(isset($_GET['delete'])){
         <div id="links">
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="add_product.php">Add Product</a></li>
+            <li><a href="add_test.php">Add Product</a></li>
             <li><a href="">About Us</a></li>
         </ul>
         </div>
     </nav>
-    <?php if($message){
-        echo "<div style='margin : 2%'>";
-       echo "<h5 style='text-align : center  ; width:50% ; margin :auto ; background-color : grey ;vertical-align: middle; padding : 2%;  font-size : 1.5em'>$message</h5>" ;
-       echo "</div>";
-    }?>
+
        
     <!-- form section -->
     <div id="form">
         
     <h3>Add New Product</h3>
-    <form id="product-form" method="post" action="add_product.php" enctype="multipart/form-data">
+    <form id="product-form" method="post" action="add_test.php" enctype="multipart/form-data">
         <div>
             <label>Poduct Title</label>
             <input type="text" name="productTitle">
@@ -128,11 +105,7 @@ if(isset($_GET['delete'])){
     </form>
 
     </div>
-    <?php
 
-        $select = mysqli_query($link, "SELECT * FROM products");
-
-    ?>
     <div id="table">
         <table class="table">
            
@@ -143,17 +116,39 @@ if(isset($_GET['delete'])){
                     <th>Action</th>
                 </tr>
            
-            
-        <?php while($row = mysqli_fetch_assoc($select)){ ?>
-         <tr>
-            <td><img id="tablePic" src="image/<?php echo $row['image']; ?>" alt=""></td>
-            <td><?php echo $row['name']; ?></td>
-            <td>$<?php echo $row['price']; ?>/-</td>
-            <td>
-               <a href="add_product.php?delete=<?php echo $row['id']; ?>" class="btn"> <i class="fas fa-trash"></i> delete </a>
-            </td>
-         </tr>
-      <?php } ?>
+      <?php 
+
+if(isset($_POST['add'])) { 
+    $_SESSION ['Item'] = $_POST['productTitle']."<br>";
+    $_SESSION ['Price'] = $_POST['productprice']."<br>";
+    // $_SESSION ['Image'] .= $_POST['product_image']['name']."<br>";
+
+
+    
+    if(!empty($_POST['productTitle']) || !empty($_POST['productprice'])){
+      $arr1 = explode("<br>",$_SESSION ['Item']) ;
+      $arr2 = explode("<br>",$_SESSION ['Price']) ;
+
+      for($i = 0 ; $i<count($arr1) ; $i++){
+            echo "
+      <tr>
+          <td><img id='tablePic' src='image/labtop-1.png' alt=''></td>
+          <td>" . $arr1 [$i] ."</td>
+          <td> ".$arr2[$i] ."</td>
+          <td>
+          <a href='' class='btn'> <i class='fas fa-trash'></i> delete </a>
+          </td>
+
+      </tr>
+        ";
+      }
+
+    }else{
+      echo "<h3> please fill all field</h3>";
+    }
+
+    }
+?>
          
         </table>
     </div>
@@ -177,7 +172,7 @@ if(isset($_GET['delete'])){
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">Add Products</a>
+              <a href="add_test.php" class="text-white">Add Products</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -186,7 +181,7 @@ if(isset($_GET['delete'])){
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">Help</a>
+              <a href="index.php" class="text-white">Home</a>
             </h6>
           </div>
           <!-- Grid column -->

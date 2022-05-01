@@ -1,5 +1,13 @@
 <?php
-    session_start();
+
+$link = mysqli_connect("localhost", "root", "", "miniproject");
+      
+?>
+
+<?php
+
+$select = mysqli_query($link, "SELECT * FROM products");
+
 ?>
 
 <!DOCTYPE html>
@@ -41,42 +49,30 @@
         <div id="links">
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="add_test.php">Add Product</a></li>
+            <li><a href="add_product.php">Add Product</a></li>
             <li><a href="">About Us</a></li>
         </ul>
         </div>
     </nav>
     
     <!-- products section -->
-    <div id="products" >
-        <?php 
-
-if(!empty ($_SESSION ['Item']) && !empty ( $_SESSION ['Price'])){
-                $_SESSION ['Item'] ;
-                $_SESSION ['Price'];
-                // $_SESSION ['Image'];
-                $arr1 = explode("<br>",$_SESSION ['Item']) ;
-                $arr2 = explode("<br>",$_SESSION ['Price']) ;
-                // $arr3 = explode("<br>",$_SESSION ['Image']) ;
+  <div id="products" >
+    <?php while($row = mysqli_fetch_assoc($select)): ?>
+            
                 
-            for($i = 0 ; $i<count($arr1)-1 ; $i++){        
-                echo "
-                <div class='card'>
-                    <img src='image/computer-1.png' class='card-img-top' alt='Fissure in Sandstone'/>
-                    <div class='card-body'>
-                        <h5 >".$arr1[$i]."</h5>
-                        <p >".$arr2[$i]."</p>
-                        <a href='#!' class='btn btn-primary'>Show Product</a>
-                    </div>
+            <div class="card">
+                <img src="image/<?php echo $row['image']; ?>" class="card-img-top" alt="Fissure in Sandstone"/>
+                <div class="card-body">
+                    <h5 ><?php echo $row['name']; ?></h5>
+                    <p >$<?php echo $row['price']; ?></p>
+                    <p ></p>
+                    
+                    <a href="#!" class="btn btn-primary">Show Product</a>
                 </div>
-            "    ;
-            }
-        }
-        ?>
+            </div>
+      <?php endwhile ?>
     </div>
-<?php
-session_destroy();
-?>
+
   <!-- Footer -->
   <footer class="text-center text-white" >
     <!-- Grid container -->
@@ -96,7 +92,7 @@ session_destroy();
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="add_test.php" class="text-white">Add Products</a>
+              <a href="#!" class="text-white">Add Products</a>
             </h6>
           </div>
           <!-- Grid column -->
@@ -105,7 +101,7 @@ session_destroy();
           <!-- Grid column -->
           <div class="col-md-2">
             <h6 class="text-uppercase font-weight-bold">
-              <a href="index.php" class="text-white">Home</a>
+              <a href="#!" class="text-white">Help</a>
             </h6>
           </div>
           <!-- Grid column -->
