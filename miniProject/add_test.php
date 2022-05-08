@@ -22,7 +22,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <title>E-commenance</title>
 
@@ -118,21 +118,22 @@
            
       <?php 
 
-if(isset($_POST['add'])) { 
-    $_SESSION ['Item'] = $_POST['productTitle']."<br>";
-    $_SESSION ['Price'] = $_POST['productprice']."<br>";
+if(isset($_POST['add'])) {
+ 
+    $_SESSION ['Item'] .= $_POST['productTitle']."<br>";
+    $_SESSION ['Price'] .= $_POST['productprice']."<br>";
     // $_SESSION ['Image'] .= $_POST['product_image']['name']."<br>";
 
 
     
-    if(!empty($_POST['productTitle']) || !empty($_POST['productprice'])){
+    if(!empty($_POST['productTitle']) && !empty($_POST['productprice'])){
       $arr1 = explode("<br>",$_SESSION ['Item']) ;
       $arr2 = explode("<br>",$_SESSION ['Price']) ;
 
-      for($i = 0 ; $i<count($arr1) ; $i++){
+      for($i = 0 ; $i<count($arr1)-1 ; $i++){
             echo "
       <tr>
-          <td><img id='tablePic' src='image/labtop-1.png' alt=''></td>
+          <td><img id='tablePic' src='css/image/labtop-1.png' alt=''></td>
           <td>" . $arr1 [$i] ."</td>
           <td> ".$arr2[$i] ."</td>
           <td>
@@ -149,7 +150,7 @@ if(isset($_POST['add'])) {
 
     }
 ?>
-         
+    
         </table>
     </div>
 

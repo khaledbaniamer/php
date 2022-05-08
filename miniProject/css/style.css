@@ -131,7 +131,7 @@ td{
 @media screen and (max-width: 479px) {
     #products{
 
-        background-color: red;
+        
         display: flex;
         flex-direction: column;
        
