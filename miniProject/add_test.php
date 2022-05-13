@@ -132,20 +132,6 @@ if(isset($_POST['add'])) {
       $arr2 = explode("<br>",$_SESSION ['Price']) ;
       $arr3 = explode("<br>" , $_SESSION["image"]);
 
-      echo '<pre>';
-      print_r($arr1);
-      echo '</pre>';
-
-      echo '<pre>';
-      print_r($arr2);
-      echo '</pre>';
-
-      echo '<pre>';
-      print_r($arr3);
-      echo '</pre>';
-
-
-
       for($i = 0 ; $i<count($arr1)-1 ; $i++){
             echo "
       <tr>
