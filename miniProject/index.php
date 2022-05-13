@@ -54,15 +54,15 @@
 if(!empty ($_SESSION ['Item']) && !empty ( $_SESSION ['Price'])){
                 $_SESSION ['Item'] ;
                 $_SESSION ['Price'];
-                // $_SESSION ['Image'];
+                 $_SESSION ['image'];
                 $arr1 = explode("<br>",$_SESSION ['Item']) ;
                 $arr2 = explode("<br>",$_SESSION ['Price']) ;
-                // $arr3 = explode("<br>",$_SESSION ['Image']) ;
+                $arr3 = explode("<br>" , $_SESSION["image"]);
                 
             for($i = 0 ; $i<count($arr1)-1 ; $i++){        
                 echo "
                 <div class='card'>
-                    <img src='css/image/computer-1.png' class='card-img-top' alt='Fissure in Sandstone'/>
+                    <img src='css/image/".$arr3[$i]."' class='card-img-top' alt='Fissure in Sandstone'/>
                     <div class='card-body'>
                         <h5 >".$arr1[$i]."</h5>
                         <p >".$arr2[$i]."</p>

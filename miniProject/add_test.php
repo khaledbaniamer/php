@@ -7,6 +7,7 @@
     $id = $_POST['delete'];
     unset($_SESSION['Item']);
     unset($_SESSION['Price']);
+    unset($_SESSION['image']);
 
  };
 ?>
@@ -119,21 +120,36 @@
       <?php 
 
 if(isset($_POST['add'])) {
- 
+    move_uploaded_file($_FILES["product_image"]["tmp_name"],"css/image/" . $_FILES["product_image"]["name"]);
     $_SESSION ['Item'] .= $_POST['productTitle']."<br>";
     $_SESSION ['Price'] .= $_POST['productprice']."<br>";
-    // $_SESSION ['Image'] .= $_POST['product_image']['name']."<br>";
-
+    $_SESSION ['image'] .= $_FILES["product_image"]['name']."<br>";
 
     
-    if(!empty($_POST['productTitle']) && !empty($_POST['productprice'])){
+
+    if(!empty($_POST['productTitle']) && !empty($_POST['productprice']) ){
       $arr1 = explode("<br>",$_SESSION ['Item']) ;
       $arr2 = explode("<br>",$_SESSION ['Price']) ;
+      $arr3 = explode("<br>" , $_SESSION["image"]);
+
+      echo '<pre>';
+      print_r($arr1);
+      echo '</pre>';
+
+      echo '<pre>';
+      print_r($arr2);
+      echo '</pre>';
+
+      echo '<pre>';
+      print_r($arr3);
+      echo '</pre>';
+
+
 
       for($i = 0 ; $i<count($arr1)-1 ; $i++){
             echo "
       <tr>
-          <td><img id='tablePic' src='css/image/labtop-1.png' alt=''></td>
+          <td><img id='tablePic' src='css/image/".$arr3[$i]."' alt=''></td>
           <td>" . $arr1 [$i] ."</td>
           <td> ".$arr2[$i] ."</td>
           <td>
@@ -149,6 +165,8 @@ if(isset($_POST['add'])) {
     }
 
     }
+
+  
 ?>
     
         </table>
