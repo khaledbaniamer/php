@@ -77,6 +77,7 @@ echo "
     <th>Password</th>
     <th>Phone</th>
     <th>Collage</th>
+    <th>Action</th>
   </tr>
 </thead>";
 $sqlSelect = "SELECT * FROM students";
@@ -84,19 +85,34 @@ $all = mysqli_query($connect , $sqlSelect);
 $row = mysqli_fetch_all($all , MYSQLI_NUM);
 
 for($i=0 ; $i<count($row) ; $i++){
-echo "
+?>
+
 <tbody>
   <tr>
-    <th scope='row'>".($i+1)."</th>
-    <td>".$row[$i][1]."</td>
-    <td>".$row[$i][2]."</td>
-    <td>".$row[$i][3]."</td>
-    <td>".$row[$i][4]."</td>
-    <td>".$row[$i][5]."</td>
+    <th scope='row'><?php echo ($i+1)?></th>
+    <td><?php echo $row[$i][1]?></td>
+    <td><?php echo $row[$i][2]?></td>
+    <td><?php echo $row[$i][3]?></td>
+    <td><?php echo $row[$i][4]?></td>
+    <td><?php echo $row[$i][5]?></td>
+    <td>
+    
+        <a href="update.php?id=<?php echo $row[$i][0]?>">update</a>
+        <a href="index.php?delete=<?php echo $row[$i][0]?>">delete</a>
+    </td>
   </tr>
 
 </tbody> 
-";
+<?php
+    if(isset($_GET['delete'])){
+        $sql = "DELETE FROM students WHERE id ='". $_GET['delete']."'";
+        mysqli_query($connect , $sql);
+        header("location:index.php");
+    }
+    
+?>
+
+<?php
 
 }
 echo "</table>";
