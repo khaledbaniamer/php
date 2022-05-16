@@ -1,16 +1,23 @@
 <?php
     require "connect.php";
     $currId = $_GET['id'];
-    $sqlCurrentID = "SELECT  items.id,items.name , items.price , categories.categories_name , categories.categories_id
-    FROM items
-    LEFT JOIN categories
-    ON items.id= $currId";
-    $sqlCategory = "SELECT * FROM categories";
-    $statCategory = $connect->query($sqlCategory);
+    $sqlCurrentID = "SELECT items.id , items.name , items.price , categories.categories_name ,categories.categories_id 
+    FROM items 
+    LEFT JOIN categories 
+    ON items.categories_id = categories.categories_id
+    WHERE items.id = $currId
+    ";
     
+     //this sql to get data of current product to do update  
     $statCurrRow = $connect->query($sqlCurrentID);
     $getRow = $statCurrRow->fetch(PDO::FETCH_ASSOC);
-    print_r($getRow);
+
+    // print_r($getRow);
+
+
+    //this sql to get all categories in database to show it in form 
+    $sqlCategory = "SELECT * FROM categories";
+    $statCategory = $connect->query($sqlCategory);
 ?>
 
 
