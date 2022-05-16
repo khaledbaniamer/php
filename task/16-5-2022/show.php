@@ -8,11 +8,7 @@
         
         $sql = "INSERT INTO items (name, price,categories_id) VALUES (:name, :price , :category)";
         $stat = $connect->prepare($sql);
-
-
         $stat->execute([':name'=>$prd_name,':price'=>$prd_price , ':category'=>$prd_category]);
-
-
     }
     }
 ?>
@@ -37,6 +33,8 @@
     ";
 
     $stat = $connect->query($sqlSelect);
+    
+
   echo "
   <table class='table'>
   <thead>
@@ -50,14 +48,29 @@
   </thead>
   ";
 ?>
-<?php 
-  echo "<tbody>";
-?>
-  
-
-  </tbody>
+<tbody>
+<?php while ($row = $stat->fetch()) {?>
+  <tr>
+      <th scope="row"><?php echo $row['id'] ?></th>
+      <td><?php echo $row['name'] ?></td>
+      <td><?php echo $row['price'] ?></td>
+      <td><?php echo $row['categories_name'] ?></td>
+      <td>
+        <a href="update.php?id=<?php echo $row['id']?>">update</a>
+        <a href="index.php?delete=<?php echo $row['id']?>">delete</a>
+      </td>
+  </tr>
+<?php }?>
+</tbody>
 </table>
 
+<?php
+    if(isset($_GET['delete'])){
+        $sql = "DELETE FROM students WHERE id ='". $_GET['delete']."'";
+        mysqli_query($connect , $sql);
+        header("location:index.php");
+    }
+?>
 </body>
 </html>
 
