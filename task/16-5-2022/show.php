@@ -67,8 +67,8 @@
 <?php
     if(isset($_GET['delete'])){
         $sql = "DELETE FROM students WHERE id ='". $_GET['delete']."'";
-        mysqli_query($connect , $sql);
-        header("location:index.php");
+        $stat = $connect->query($sql);
+        header("location:show.php");
     }
 ?>
 </body>

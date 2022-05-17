@@ -1,6 +1,9 @@
 <?php
     require "connect.php";
+
     $currId = $_GET['id'];
+
+
     $sqlCurrentID = "SELECT items.id , items.name , items.price , categories.categories_name ,categories.categories_id 
     FROM items 
     LEFT JOIN categories 
@@ -12,7 +15,7 @@
     $statCurrRow = $connect->query($sqlCurrentID);
     $getRow = $statCurrRow->fetch(PDO::FETCH_ASSOC);
 
-    // print_r($getRow);
+    print_r($getRow);
 
 
     //this sql to get all categories in database to show it in form 
