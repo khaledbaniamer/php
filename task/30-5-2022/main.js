@@ -1,7 +1,8 @@
+
 async function laodData(){
     
-    const jsonData = await fetch('api.php');
-    const allData = await jsonData.json();
+    var jsonData = await fetch('api.php');
+    var allData = await jsonData.json();
     console.log(allData);
 
     for(let i = 0 ; i < allData.length ; i++){
@@ -15,7 +16,30 @@ async function laodData(){
         </tr>
         `;
     }
-}
 
+
+    const search = document.getElementById("search");
+    const searchInput = document.getElementById("get_id");
+    const showSearchId = document.getElementById("showSearchResult");
+    
+    search.addEventListener("click" , function(e){
+        e.preventDefault();
+        var id = searchInput.value-1;
+        // console.log(id);
+    
+        document.getElementById("showSearchResult").innerHTML =`
+        <tr>
+                <td>${ allData[id].id }</td>
+                <td>${ allData[id].first_name }</td>
+                <td>${ allData[id].last_name }</td>
+                <td>${ allData[id].age }</td>
+        </tr>
+        `;
+    
+    })
+}
 laodData();
+
+
+
 

@@ -49,6 +49,32 @@
         <button type="submit" class="btn btn-primary" name="update">Update</button>
       </form>
 
+      <hr> <br> <br> 
+
+      <form action="" method="post" style="width: 70% ; margin :auto;">
+        <div class="mb-3">
+            <label class="form-label">ID</label>
+            <input type="text" class="form-control" id="get_id" name="age">
+          </div>
+
+          <button type="submit" class="btn btn-primary" name="Search" id="search">Search</button>
+      </form>
+
+      <br> <br>
+
+      <table class="table" style="width: 70% ; margin :auto;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">age</th>
+          </tr>
+        </thead>
+        <tbody id="showSearchResult">
+
+        </tbody>
+      </table> 
 
     <script src="main.js"></script>
 </body>
